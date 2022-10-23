@@ -72,7 +72,7 @@ func signNewKey(conf *config.ConfigType) {
 	json.Unmarshal(body, signResp)
 
 	if !signResp.Success {
-		log.Errorf("Sign request failed with err: %s", signResp.Message)
+		log.Errorf("Sign request failed with err: %v", signResp.Message)
 	} else {
 		err := os.WriteFile(helpers.ExpandPath(conf.GetCertFile()), []byte(signResp.SignedKey), os.FileMode(0600))
 		if err != nil {
