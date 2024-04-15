@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.0
-	github.com/st2projects/ssh-sentinel-core v1.0.0
+	github.com/st2projects/ssh-sentinel-core v1.0.1
 	golang.org/x/crypto v0.20.0
 )
 
