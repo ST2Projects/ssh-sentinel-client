@@ -32,13 +32,9 @@ func IsCertValid(certPath string) (bool, string) {
 		validBefore := time.Unix(int64(cert.ValidBefore), 0).UTC()
 		validAfter := time.Unix(int64(cert.ValidAfter), 0).UTC()
 
-		validBeforeString := validBefore.Format("2006-01-01 15:04:05.5 +0000")
+		validBeforeString := validBefore.Format("2006-01-02 15:04:05.5 UTC")
 
-		if now.After(validAfter) && now.Before(validBefore) {
-			return true, validBeforeString
-		} else {
-			return false, validBeforeString
-		}
+		return now.After(validAfter) && now.Before(validBefore), validBeforeString
 	}
 
 	return false, "Cert not found"
