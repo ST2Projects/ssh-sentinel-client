@@ -3,16 +3,18 @@ package config
 import (
 	"encoding/json"
 	"github.com/st2projects/ssh-sentinel-client/helpers"
+	"github.com/st2projects/ssh-sentinel-core/model"
 	"os"
 )
 
 type ConfigType struct {
-	EndPoint   string   `json:"endPoint"`
-	APIKey     string   `json:"apiKey"`
-	Username   string   `json:"username"`
-	Principals []string `json:"principals"`
-	PublicKey  string   `json:"publicKey"`
-	CertFile   string   `json:"certFile"`
+	EndPoint   string            `json:"endPoint"`
+	APIKey     string            `json:"apiKey"`
+	Username   string            `json:"username"`
+	Principals []string          `json:"principals"`
+	Extensions []model.Extension `json:"extensions"`
+	PublicKey  string            `json:"publicKey"`
+	CertFile   string            `json:"certFile"`
 }
 
 var Config *ConfigType

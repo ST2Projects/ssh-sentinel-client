@@ -13,13 +13,11 @@ func IsCertValid(certPath string) (bool, string) {
 
 	if certValid {
 		certBytes, err := os.ReadFile(certPath)
-
 		if err != nil {
 			log.Errorf("%s - cert does not exist or cannot be read", certPath)
 		}
 
 		pub, _, _, _, err := ssh.ParseAuthorizedKey(certBytes)
-
 		if err != nil {
 			log.Errorf("Error when parsing cert: %s", err.Error())
 		}
@@ -34,7 +32,7 @@ func IsCertValid(certPath string) (bool, string) {
 		validBefore := time.Unix(int64(cert.ValidBefore), 0).UTC()
 		validAfter := time.Unix(int64(cert.ValidAfter), 0).UTC()
 
-		validBeforeString := validBefore.Format("2006-01-01 15:04:05.5 -0700")
+		validBeforeString := validBefore.Format("2006-01-01 15:04:05.5 +0000")
 
 		if now.After(validAfter) && now.Before(validBefore) {
 			return true, validBeforeString

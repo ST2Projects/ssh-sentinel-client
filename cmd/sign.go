@@ -50,11 +50,11 @@ func signNewKey(conf *config.ConfigType) {
 		Username:   conf.Username,
 		APIKey:     conf.APIKey,
 		Principals: conf.Principals,
+		Extensions: conf.Extensions,
 		Key:        string(key),
 	}
 
 	signReqBytes, err := json.Marshal(signReq)
-
 	if err != nil {
 		panic(err)
 	}
@@ -62,7 +62,6 @@ func signNewKey(conf *config.ConfigType) {
 	resp, err := http.Post(conf.EndPoint, "application/json", bytes.NewBuffer(signReqBytes))
 
 	body, err := io.ReadAll(resp.Body)
-
 	if err != nil {
 		panic(err)
 	}
